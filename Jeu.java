@@ -6,9 +6,6 @@ public class Jeu {
         Plateau p = new Plateau();
         Joueur j1 = new Joueur("Plop",1);
         Joueur j2 = new Joueur("Joueur",2);
-        //A modifier
-        int Joueuractif = 1;
-
         int hauteur = 800;
         int largeur = 800;
         Fenetre f = new Fenetre("plateau",largeur,hauteur);
@@ -31,13 +28,15 @@ public class Jeu {
                 Pion pion = new Pion(posX,posY);
                 //Permet de rester dans les limites du plateau
                 if(posX <= 19 && posY <= 19 && posX >= 0 && posY >= 0){
-                    if (Joueuractif == 1){
+                    if (j1.tourdejouer){
                         p.afficherPion(f,largeur,hauteur,pion,j1);
-                        Joueuractif = 2;
+                        j1.tourdejouer = false;
+                        j2.tourdejouer = true;
                     }
                     else{
                         p.afficherPion(f,largeur,hauteur,pion,j2);
-                        Joueuractif = 1;
+                        j2.tourdejouer = false;
+                        j1.tourdejouer = true;
                     }
                     f.rafraichir();
                 }
