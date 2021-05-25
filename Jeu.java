@@ -7,6 +7,11 @@ public class Jeu {
         Joueur j1 = new Joueur();
         Joueur j2 = new Joueur();
         Souris souris = f.getSouris();
+        int hauteur = 800;
+        int largeur = 800;
+        Fenetre f = new Fenetre("plateau",largeur,hauteur);
+        int tailleX = hauteur/21;
+        int tailleY = hauteur/21;
         while ( true ) { 
             try {
                 Thread.sleep (20);
@@ -20,10 +25,12 @@ public class Jeu {
                 int posX = ((int)Math.round((double)point.getX()/tailleX ))-1;
                 int posY = ((int)Math.round((double)point.getY()/tailleY ))-1;
                 pion = new Pion(posX,posY);
+                //Permet de rester dans les limites du plateau
                 if(posX < 19 && posY < 19 && posX >= 0 && posY >= 0){
                     p.afficherPion(f,largeur,hauteur,pion);
                     f.rafraichir();
                 }
             }
+        }
     }
 }
