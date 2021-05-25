@@ -4,8 +4,11 @@ import MG2D.geometrie.*;
 public class Jeu {
     public static void main(String[] args) {
         Plateau p = new Plateau();
-        Joueur j1 = new Joueur();
-        Joueur j2 = new Joueur();
+        Joueur j1 = new Joueur("Plop",1);
+        Joueur j2 = new Joueur("Joueur",2);
+        //A modifier
+        int Joueuractif = 1;
+
         int hauteur = 800;
         int largeur = 800;
         Fenetre f = new Fenetre("plateau",largeur,hauteur);
@@ -28,7 +31,14 @@ public class Jeu {
                 Pion pion = new Pion(posX,posY);
                 //Permet de rester dans les limites du plateau
                 if(posX <= 19 && posY <= 19 && posX >= 0 && posY >= 0){
-                    p.afficherPion(f,largeur,hauteur,pion);
+                    if (Joueuractif == 1){
+                        p.afficherPion(f,largeur,hauteur,pion,j1);
+                        Joueuractif = 2;
+                    }
+                    else{
+                        p.afficherPion(f,largeur,hauteur,pion,j2);
+                        Joueuractif = 1;
+                    }
                     f.rafraichir();
                 }
             }
