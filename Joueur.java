@@ -3,22 +3,19 @@ import MG2D.geometrie.*;
 
 public class Joueur {
     //ATTRIBUTS
-    private Pion[] listeDePions ;
-    String nom = new String();
-    int numero;
-    boolean tourdejouer;
+    private Pion[] listeDePions;
+    private String nom = new String();
+    private int numero;
+    private Boolean tourdejouer;
     
-    //METHODES
-
     //Constructeur par défaut
     public Joueur(){
         this.nom = "nom inconnu";
         this.numero = 0;
         this.tourdejouer = false;
-        
         this.listeDePions= new Pion[35] ;
-        
     }
+
     //Constructeur par paramètre
     public Joueur(String nom, int numero){
         this.nom = nom;
@@ -26,6 +23,33 @@ public class Joueur {
         this.listeDePions= new Pion[35] ;
         this.tourdejouer = false;
     }
+
+    //METHODES
+
+    public String getNom(){
+        return this.nom;
+    }
+
+    public void setNom(String nom){
+        this.nom = nom;
+    }
+
+    public int getNumero(){
+        return this.numero;
+    }
+
+    public void setNumero(int numero){
+        this.numero = numero;
+    }
+
+    public boolean getTour(){
+        return this.tourdejouer;
+    }
+
+    public void setTour(boolean bool){
+        this.tourdejouer = bool;
+    }
+
     //Methode qui determine le joueur qui joue en premier
     public static int JoueurStart(){
         double rand = Math.random();
@@ -50,17 +74,9 @@ public class Joueur {
   
     //Méthode qui retourne le nom du joueur, son numero de joueur, son nombre de pions et si c'est à lui de jouer
     public String toString(){
-        return (this.nom+"est le joueur numero "+ this.numero+" et possede "+ this.listeDePions.length + " " + "pions" + "et son tour de jouer est sur " +this.tourdejouer);
+        return (this.nom+" est le joueur numero "+ this.numero+" et possede "+ this.listeDePions.length + " pions et son tour de jouer est sur " +this.tourdejouer);
         
     }
 
 
 }
-        
-
-
-        
-        
-
-    
-
