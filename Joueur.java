@@ -19,6 +19,13 @@ public class Joueur {
         this.listeDePions= new Pion[35] ;
         
     }
+    //Constructeur par paramètre
+    public Joueur(String nom, int numero){
+        this.nom = nom;
+        this.numero = numero;
+        this.listeDePions= new Pion[35] ;
+        this.tourdejouer = false;
+    }
     //Methode qui determine le joueur qui joue en premier
     public static int JoueurStart(){
         double rand = Math.random();
