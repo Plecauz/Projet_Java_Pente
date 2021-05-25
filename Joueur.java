@@ -43,7 +43,7 @@ public class Joueur {
   
     //Méthode qui retourne le nom du joueur, son numero de joueur, son nombre de pions et si c'est à lui de jouer
     public String toString(){
-        return (this.nom+"est le joueur numero "+ this.numero+" et possede "+ this.listeDePions.length + " " + "pions" "et son tour de jouer est sur " +this.tourdejouer);
+        return (this.nom+"est le joueur numero "+ this.numero+" et possede "+ this.listeDePions.length + " " + "pions" + "et son tour de jouer est sur " +this.tourdejouer);
         
     }
 
