@@ -4,10 +4,10 @@ import MG2D.geometrie.*;
 
 public class Plateau{
 
-    private int[][] intersections;
+    private Pion[][] intersections;
 
     public Plateau(){
-        intersections = new int[18][18];
+        intersections = new Pion[20][20];
     }
 
     public Fenetre afficherPlateau(Fenetre f,int largeur, int hauteur){
@@ -29,10 +29,24 @@ public class Plateau{
         return f;
     }
 
+    public Pion[][] getIntersections(){
+        return this.intersections;
+    }
+
     public Fenetre afficherPion(Fenetre f,int largeur, int hauteur, Pion pion){
         int tailleX = largeur/21;
         int tailleY = hauteur/21;
-        f.ajouter(new Cercle(Couleur.NOIR, new Point(tailleX*(pion.getX()+1),tailleY*(pion.getY()+1)), 12,true));
+        if (pion.getJoueur().getNumero() == 1){
+            f.ajouter(new Cercle(Couleur.JAUNE, new Point(tailleX*(pion.getX()+1),tailleY*(pion.getY()+1)), 12,true));
+        }
+        else{
+            f.ajouter(new Cercle(Couleur.BLEU, new Point(tailleX*(pion.getX()+1),tailleY*(pion.getY()+1)), 12,true));
+        }
+        intersections[pion.getX()][pion.getY()] = pion;
         return f;
+    }
+
+    public void supprimerPion(Pion pion){
+        intersections[pion.getX()][pion.getY()] = null;
     }
 }
