@@ -35,7 +35,7 @@ public class Joueur {
     */
 
     public String toString(){
-        return (this.nom+"est le joueur numero "+ this.numero+" et possede "+ this.listeDePions.length + " " + "pions" "et son tour de jouer est sur " +this.tourdejouer);
+        return (this.nom+"est le joueur numero "+ this.numero+" et possede "+ this.listeDePions.length + " " + "pions" +"et son tour de jouer est sur " +this.tourdejouer);
         
     }
 
