@@ -27,7 +27,7 @@ public class Jeu {
                 int posY = ((int)Math.round((double)point.getY()/tailleY ))-1;
                 Pion pion = new Pion(posX,posY);
                 //Permet de rester dans les limites du plateau
-                if(posX < 19 && posY < 19 && posX >= 0 && posY >= 0){
+                if(posX <= 19 && posY <= 19 && posX >= 0 && posY >= 0){
                     p.afficherPion(f,largeur,hauteur,pion);
                     f.rafraichir();
                 }
