@@ -1,5 +1,5 @@
-import MG2D.* ;
-import MG2D.geometrie.*;
+//import MG2D.* ;
+//import MG2D.geometrie.*;
 
 public class Joueur {
     //ATTRIBUTS
@@ -7,13 +7,15 @@ public class Joueur {
     private String nom = new String();
     private int numero;
     private Boolean tourdejouer;
+    private int nbpaires;
     
     //Constructeur par défaut
     public Joueur(){
         this.nom = "nom inconnu";
         this.numero = 0;
         this.tourdejouer = false;
-        this.listeDePions= new Pion[35] ;
+        this.listeDePions= new Pion[35];
+        this.nbpaires = 0;
     }
 
     //Constructeur par paramètre
@@ -22,6 +24,7 @@ public class Joueur {
         this.numero = numero;
         this.listeDePions= new Pion[35] ;
         this.tourdejouer = false;
+        this.nbpaires = 0;
     }
 
     //METHODES
