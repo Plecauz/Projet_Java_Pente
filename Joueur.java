@@ -4,9 +4,9 @@ import MG2D.geometrie.*;
 public class Joueur {
     //ATTRIBUTS
     private Pion[] listeDePions ;
-    String nom = new String();
-    int numero;
-    boolean tourdejouer;
+    private String nom = new String();
+    private int numero;
+    private boolean tourdejouer;
     
     //METHODES
 
@@ -46,7 +46,17 @@ public class Joueur {
         }
     }
 
-  
+    public int getNumero(){
+        return this.numero;
+    }
+
+    public boolean getTour(){
+        return this.tourdejouer;
+    }
+
+    public void setTour(boolean tour){
+        this.tourdejouer = tour;
+    }
   
     //Méthode qui retourne le nom du joueur, son numero de joueur, son nombre de pions et si c'est à lui de jouer
     public String toString(){
@@ -56,11 +66,3 @@ public class Joueur {
 
 
 }
-        
-
-
-        
-        
-
-    
-
