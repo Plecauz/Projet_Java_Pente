@@ -36,8 +36,8 @@ public class Demarrage{
         f.rafraichir();
 
         //Détection des clics sur les bouttons
-
-        while ( true ) {
+        boolean play = true;
+        while ( play ) {
             if (souris.getClicGauche() == true) {
                 Point xclic = souris.getPosition();
                 Point yclic = souris.getPosition();
@@ -49,6 +49,7 @@ public class Demarrage{
                 if (xclic.getX() > (largeur/2)-100 && yclic.getY() > 50) {
                     if (xclic.getX() < (largeur/2)+100 && yclic.getY() < 100) {
                         f.fermer();
+                        play = false;
                     }
                 }
                 
