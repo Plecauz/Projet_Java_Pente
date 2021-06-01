@@ -1,5 +1,7 @@
 import MG2D.*;
 import MG2D.geometrie.*;
+import java.awt.Font;
+
 
 public class Jeu {
     public static void main(String[] args) {
@@ -14,10 +16,41 @@ public class Jeu {
         Souris souris = f.getSouris();
         int tailleX = hauteur/21;
         int tailleY = hauteur/21;
-        f.ajouter(new Rectangle());
+
+        // Création des boutons de navigation
+        Couleur coltexte = new Couleur(153,38,0);
+        Couleur fond = new Couleur(175,222,228);
+        Font Calibri = new Font("Calibri", Font.TYPE1_FONT, 25);
+        // Bouton Menu
+        Point menubg = new Point(tailleX,hauteurf-80);
+        Point menuhd = new Point(tailleX+200,hauteurf-20);
+        Point textecoor = new Point(tailleX+100,hauteurf-50);
+        boolean menu = false;
+        /*f.ajouter(new Rectangle(fond,menubg,menuhd,true));
+        f.ajouter(new Texte(coltexte, "Menu Principal", Calibri, textecoor));*/
+
+        // Affichage des infos
+        f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-100, hauteurf-50)));
+
         p.afficherPlateau(f, largeur, hauteur);
         f.rafraichir();
         while ( true ) { 
+            // Vérification des clics
+            /*while (menu == false) {
+                f.ajouter(new Rectangle(fond,menubg,menuhd,true));
+                f.ajouter(new Texte(coltexte, "Menu Principal", Calibri, textecoor));
+                if (souris.getClicGauche() == true) {
+                    System.out.println("Le clic a bien été pris en compte");
+                    Point collectclic = souris.getPosition();
+                    System.out.println("Coordonnées de la souris : "+collectclic);
+                    System.out.println("Coordonnées du bouton : "+menubg+" "+ menuhd);
+                    if ( collectclic.getX() > menubg.getX() &&  collectclic.getY() > menuhd.getY()) {
+                        f.fermer();
+                        menu = true;
+                    }
+                }
+                f.rafraichir();
+            }*/
             try {
                 Thread.sleep (20);
                 }		
@@ -53,6 +86,8 @@ public class Jeu {
                             }
                         }
                     }
+
+
                     f.rafraichir();
                 }
             }
