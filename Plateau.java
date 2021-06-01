@@ -35,6 +35,7 @@ public class Plateau{
         int posY = pion.getY();
         int[][] relatifs = {{-1,1},{0,1},{1,1},{-1,0},{1,0},{-1,-1},{0,-1},{1,-1}};
         for(int[] relatif:relatifs){
+            if((posX+relatif[0] < 20 && posY+relatif[1] < 20) && (posX+relatif[0] > 0 && posY+relatif[1] > 0))
             if(intersections[posX+relatif[0]][posY+relatif[1]] != null){
                 if(intersections[posX+relatif[0]][posY+relatif[1]].getJoueur().getNumero() != pion.getJoueur().getNumero()){
                     //System.out.println("Voisin différent");
@@ -56,10 +57,15 @@ public class Plateau{
         boolean fini = false;
         int i = 2;
         while(!fini){
-            if(intersections[posX+relX*i][posY+relY*i] != null){
-                if(intersections[posX+relX*i][posY+relY*i].getJoueur().getNumero() == num){
-                    numPion += 1;
-                    i+=1;
+            if((posX+relX*i < 20 && posY+relY*i < 20) && (posX+relX*i > 0 && posY+relY*i > 0)){
+                if(intersections[posX+relX*i][posY+relY*i] != null){
+                    if(intersections[posX+relX*i][posY+relY*i].getJoueur().getNumero() == num){
+                        numPion += 1;
+                        i+=1;
+                    }
+                    else{
+                        fini = true;
+                    }
                 }
                 else{
                     fini = true;
@@ -72,10 +78,15 @@ public class Plateau{
         fini = false;
         i = 1;
         while(!fini){
-            if(intersections[posX+(-relX*i)][posY+(-relY*i)] != null){
-                if(intersections[posX+(-relX*i)][posY+(-relY*i)].getJoueur().getNumero() == num){
-                    numPion += 1;
-                    i+=1;
+            if((posX+(-relX*i) < 20 && posY+(-relY*i) <20) && (posX+relX*i > 0 && posY+relY*i > 0)){
+                if(intersections[posX+(-relX*i)][posY+(-relY*i)] != null){
+                    if(intersections[posX+(-relX*i)][posY+(-relY*i)].getJoueur().getNumero() == num){
+                        numPion += 1;
+                        i+=1;
+                    }
+                    else{
+                        fini = true;
+                    }
                 }
                 else{
                     fini = true;
