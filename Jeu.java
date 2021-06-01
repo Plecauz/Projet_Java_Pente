@@ -6,12 +6,15 @@ public class Jeu {
         Plateau p = new Plateau();
         Joueur j1 = new Joueur("Plop",1);
         Joueur j2 = new Joueur("Joueur",2);
+        int hauteurf = 900;
+        int largeurf = 1300;
         int hauteur = 800;
         int largeur = 800;
-        Fenetre f = new Fenetre("plateau",largeur,hauteur);
+        Fenetre f = new Fenetre("plateau",largeurf,hauteurf);
         Souris souris = f.getSouris();
         int tailleX = hauteur/21;
         int tailleY = hauteur/21;
+        f.ajouter(new Rectangle());
         p.afficherPlateau(f, largeur, hauteur);
         f.rafraichir();
         while ( true ) { 
