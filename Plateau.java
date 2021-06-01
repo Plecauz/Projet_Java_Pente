@@ -11,7 +11,6 @@ public class Plateau{
     }
 
     public Fenetre afficherPlateau(Fenetre f,int largeur, int hauteur){
-        boolean pair = true;
         int tailleX = largeur/21;
         int tailleY = hauteur/21;
         f.ajouter(new Texture("img/plateau.png",new Point(tailleX,tailleY),largeur-2*tailleX,hauteur-2*tailleY));
@@ -47,5 +46,4 @@ public class Plateau{
     public void supprimerPion(Pion pion){
         intersections[pion.getX()][pion.getY()] = null;
     }
-    //bonjour
 }
