@@ -22,6 +22,14 @@ public class Plateau{
         return this.intersections;
     }
 
+    public boolean ajoutPion(Pion pion){
+        if (intersections[pion.getX()][pion.getY()] == null){
+            intersections[pion.getX()][pion.getY()] = pion;
+            return true;
+        }
+        return false;
+    }
+
     public Fenetre afficherPion(Fenetre f,int largeur, int hauteur, Pion pion){
         int tailleX = largeur/21;
         int tailleY = hauteur/21;
@@ -33,7 +41,6 @@ public class Plateau{
         else{
             f.ajouter(new Texture("img/pion_noir.png",new Point(tailleX*(pion.getX()+1)-taillePionX/2,tailleY*(pion.getY()+1)-taillePionY/2),taillePionX,taillePionY));
         }
-        intersections[pion.getX()][pion.getY()] = pion;
         return f;
     }
 

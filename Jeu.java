@@ -31,15 +31,17 @@ public class Jeu {
                 if(posX <= 19 && posY <= 19 && posX >= 0 && posY >= 0){
                     if (j1.getTour()){
                         pion = new Pion(posX,posY,j1);
-                        p.afficherPion(f,largeur,hauteur,pion);
-                        j1.setTour(false);
-                        j2.setTour(true);
+                        if(p.ajoutPion(pion)){
+                            j1.setTour(false);
+                            j2.setTour(true);
+                        }
                     }
                     else{
                         pion = new Pion(posX,posY,j2);
-                        p.afficherPion(f,largeur,hauteur,pion);
-                        j2.setTour(false);
-                        j1.setTour(true);
+                        if(p.ajoutPion(pion)){
+                            j2.setTour(false);
+                            j1.setTour(true);
+                        }
                     }
                     f.effacer();
                     p.afficherPlateau(f, largeur, hauteur);
