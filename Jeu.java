@@ -25,9 +25,7 @@ public class Jeu {
             if(souris.getClicGauche() == true){
                 Point point = souris.getPosition();
                 int posX = ((int)Math.round((double)point.getX()/tailleX ))-1;
-                int posY = ((int)Math.round((double)point.getY()/tailleY ))-1;
-                
-                
+                int posY = ((int)Math.round((double)point.getY()/tailleY ))-1;   
                 //Permet de rester dans les limites du plateau
                 if(posX <= 19 && posY <= 19 && posX >= 0 && posY >= 0){
                     if (j1.getTour()){
