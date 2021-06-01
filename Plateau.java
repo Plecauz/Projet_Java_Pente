@@ -37,13 +37,55 @@ public class Plateau{
         for(int[] relatif:relatifs){
             if(intersections[posX+relatif[0]][posY+relatif[1]] != null){
                 if(intersections[posX+relatif[0]][posY+relatif[1]].getJoueur().getNumero() != pion.getJoueur().getNumero()){
-                    System.out.println("Voisin différent");
+                    //System.out.println("Voisin différent");
                 }
                 else if(intersections[posX+relatif[0]][posY+relatif[1]].getJoueur().getNumero() == pion.getJoueur().getNumero()) {
-                    System.out.println("Voisin identique");
+                    checkCoupGagnant(pion,relatif);
                 };
             }
         }
+    }
+
+    public void checkCoupGagnant(Pion pion, int[] relatif){
+        int num = pion.getJoueur().getNumero();
+        int posX = pion.getX();
+        int posY = pion.getY();
+        int relX = relatif[0];
+        int relY = relatif[1];
+        int numPion = 2;
+        boolean fini = false;
+        int i = 2;
+        while(!fini){
+            if(intersections[posX+relX*i][posY+relY*i] != null){
+                if(intersections[posX+relX*i][posY+relY*i].getJoueur().getNumero() == num){
+                    numPion += 1;
+                    i+=1;
+                }
+                else{
+                    fini = true;
+                }
+            }
+            else{
+                fini = true;
+            }
+        }
+        fini = false;
+        i = 1;
+        while(!fini){
+            if(intersections[posX+(-relX*i)][posY+(-relY*i)] != null){
+                if(intersections[posX+(-relX*i)][posY+(-relY*i)].getJoueur().getNumero() == num){
+                    numPion += 1;
+                    i+=1;
+                }
+                else{
+                    fini = true;
+                }
+            }
+            else{
+                fini = true;
+            }
+        }
+        System.out.println(numPion);
     }
 
     public Fenetre afficherPion(Fenetre f,int largeur, int hauteur, Pion pion){
