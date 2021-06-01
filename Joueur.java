@@ -1,6 +1,3 @@
-import MG2D.* ;
-import MG2D.geometrie.*;
-
 public class Joueur {
     //ATTRIBUTS
     private Pion[] listeDePions ;
