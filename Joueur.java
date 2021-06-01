@@ -54,6 +54,10 @@ public class Joueur {
     public void setTour(boolean tour){
         this.tourdejouer = tour;
     }
+
+    public String getNom(){
+        return this.nom;
+    }
   
     //Méthode qui retourne le nom du joueur, son numero de joueur, son nombre de pions et si c'est à lui de jouer
     public String toString(){
