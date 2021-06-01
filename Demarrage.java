@@ -4,7 +4,7 @@ import java.awt.Font;
 
 public class Demarrage{
     public static void main(String[] args) {
-
+// Bonjour
         int x1 = 100;
         int x2 = 980;
         int y1 = 500;
