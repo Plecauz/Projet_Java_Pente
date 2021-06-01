@@ -26,18 +26,19 @@ public class Jeu {
                 Point point = souris.getPosition();
                 int posX = ((int)Math.round((double)point.getX()/tailleX ))-1;
                 int posY = ((int)Math.round((double)point.getY()/tailleY ))-1;
-                Pion pion = new Pion(5,4,j1);
+                
+                
                 //Permet de rester dans les limites du plateau
                 if(posX <= 19 && posY <= 19 && posX >= 0 && posY >= 0){
                     if (j1.getTour()){
-                        pion = new Pion(posX,posY,j1);
+                        Pion pion = new Pion(posX,posY,j1);
                         if(p.ajoutPion(pion)){
                             j1.setTour(false);
                             j2.setTour(true);
                         }
                     }
                     else{
-                        pion = new Pion(posX,posY,j2);
+                      Pion pion = new Pion(posX,posY,j2);
                         if(p.ajoutPion(pion)){
                             j2.setTour(false);
                             j1.setTour(true);
