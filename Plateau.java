@@ -47,4 +47,5 @@ public class Plateau{
     public void supprimerPion(Pion pion){
         intersections[pion.getX()][pion.getY()] = null;
     }
+    //bonjour
 }
