@@ -24,9 +24,26 @@ public class Plateau{
     public boolean ajoutPion(Pion pion){
         if (intersections[pion.getX()][pion.getY()] == null){
             intersections[pion.getX()][pion.getY()] = pion;
+            checkVoisins(pion);
             return true;
         }
         return false;
+    }
+
+    public void checkVoisins(Pion pion){
+        int posX = pion.getX();
+        int posY = pion.getY();
+        int[][] relatifs = {{-1,1},{0,1},{1,1},{-1,0},{1,0},{-1,-1},{0,-1},{1,-1}};
+        for(int[] relatif:relatifs){
+            if(intersections[posX+relatif[0]][posY+relatif[1]] != null){
+                if(intersections[posX+relatif[0]][posY+relatif[1]].getJoueur().getNumero() != pion.getJoueur().getNumero()){
+                    System.out.println("Voisin différent");
+                }
+                else if(intersections[posX+relatif[0]][posY+relatif[1]].getJoueur().getNumero() == pion.getJoueur().getNumero()) {
+                    System.out.println("Voisin identique");
+                };
+            }
+        }
     }
 
     public Fenetre afficherPion(Fenetre f,int largeur, int hauteur, Pion pion){
