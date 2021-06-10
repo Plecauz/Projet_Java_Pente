@@ -38,7 +38,7 @@ public class Plateau{
             if((posX+relatif[0] < 20 && posY+relatif[1] < 20) && (posX+relatif[0] > 0 && posY+relatif[1] > 0))
             if(intersections[posX+relatif[0]][posY+relatif[1]] != null){
                 if(intersections[posX+relatif[0]][posY+relatif[1]].getJoueur().getNumero() != pion.getJoueur().getNumero()){
-                    //System.out.println("Voisin différent");
+                    Capture(pion, relatif);
                 }
                 else if(intersections[posX+relatif[0]][posY+relatif[1]].getJoueur().getNumero() == pion.getJoueur().getNumero()) {
                     checkCoupGagnant(pion,relatif);
@@ -76,6 +76,38 @@ public class Plateau{
             }
         }
         System.out.println(numPion);
+    }
+
+    public boolean Capture(Pion pion,int[] relatif ){
+        boolean capture = false ;
+        int num = pion.getJoueur().getNumero();
+        int posX = pion.getX();
+        int posY = pion.getY();
+        int relX = relatif[0];
+        int relY = relatif[1];
+            if ((posX+relX*2 < 20 && posY+relY*2 < 20)&& (posX+relX*2 >0 && posY+relY*2 > 0)) {
+                if(intersections[posX+relX*2][posY+relY*2] != null){
+                    if(intersections[posX+relX*2][posY+relY*2].getJoueur().getNumero() != num){
+                       
+                       
+                        if(intersections[posX+relX*3][posY+relY*3] != null){
+                            if(intersections[posX+relX*3][posY+relY*3].getJoueur().getNumero() == num){
+                                
+                                
+                                capture = true ; 
+                            }
+                        
+                        }  
+                    } 
+                }
+            
+            }
+        if (capture == true) {
+            supprimerPion(intersections[posX+relX*2][posY+relY*2]);
+            supprimerPion(intersections[posX+relatif[0]][posY+relatif[1]]);
+        }    
+        System.out.println(capture);
+        return  capture ;   
     }
 
     public Fenetre afficherPion(Fenetre f,int largeur, int hauteur, Pion pion){
