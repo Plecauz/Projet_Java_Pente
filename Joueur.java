@@ -50,6 +50,14 @@ public class Joueur {
         return this.numero;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public int getNbPions() {
+        return listeDePions.length;
+    }
+
     public boolean getTour(){
         return this.tourdejouer;
     }

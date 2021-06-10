@@ -24,33 +24,31 @@ public class Jeu {
         // Bouton Menu
         Point menubg = new Point(tailleX,hauteurf-80);
         Point menuhd = new Point(tailleX+200,hauteurf-20);
+        Point histobg = new Point(tailleX+250, hauteurf-80);
+        Point histohd = new Point(tailleX+450, hauteurf-80);
         Point textecoor = new Point(tailleX+100,hauteurf-50);
+        String pionsj1 = String.valueOf(j1.getNbPions());
+        String pionsj2 = String.valueOf(j2.getNbPions());
         boolean menu = false;
-        /*f.ajouter(new Rectangle(fond,menubg,menuhd,true));
-        f.ajouter(new Texte(coltexte, "Menu Principal", Calibri, textecoor));*/
+        boolean arreter = false;
 
-        // Affichage des infos
-        f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-100, hauteurf-50)));
-
-        p.afficherPlateau(f, largeur, hauteur);
-        f.rafraichir();
-        while ( true ) { 
-            // Vérification des clics
-            /*while (menu == false) {
-                f.ajouter(new Rectangle(fond,menubg,menuhd,true));
-                f.ajouter(new Texte(coltexte, "Menu Principal", Calibri, textecoor));
+        // Affichage des infos;
+        f.ajouter(new Texte(coltexte, j1.getNom(), Calibri, new Point(largeurf-150, hauteurf-200)));
+        f.ajouter(new Texte(coltexte, pionsj1, Calibri, new Point(largeurf-150, hauteurf-250)));
+        f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-150, hauteurf-500)));
+        f.ajouter(new Texte(coltexte, pionsj2, Calibri, new Point(largeurf-150, hauteurf-550)));
+        
+        f.ajouter(new Rectangle(fond,histobg,histohd,true));
+        f.ajouter(new Texte(coltexte, "Historique des coups", Calibri, textecoor));
                 if (souris.getClicGauche() == true) {
-                    System.out.println("Le clic a bien été pris en compte");
                     Point collectclic = souris.getPosition();
-                    System.out.println("Coordonnées de la souris : "+collectclic);
-                    System.out.println("Coordonnées du bouton : "+menubg+" "+ menuhd);
-                    if ( collectclic.getX() > menubg.getX() &&  collectclic.getY() > menuhd.getY()) {
-                        f.fermer();
-                        menu = true;
+                    if (collectclic.getX() > menubg.getX() &&  collectclic.getY() < menuhd.getY()) {
+                        System.out.println("Historique à afficher");
                     }
                 }
-                f.rafraichir();
-            }*/
+        p.afficherPlateau(f, largeur, hauteur);
+        f.rafraichir();
+        while (arreter == false ) { 
             try {
                 Thread.sleep (20);
                 }		
@@ -86,9 +84,34 @@ public class Jeu {
                             }
                         }
                     }
-
+                    // Mise à jour du compteur
+                    pionsj1 = String.valueOf(j1.getNbPions());
+                    pionsj2 = String.valueOf(j2.getNbPions());
+                    f.ajouter(new Texte(coltexte, j1.getNom(), Calibri, new Point(largeurf-150, hauteurf-200)));
+                    f.ajouter(new Texte(coltexte, pionsj1, Calibri, new Point(largeurf-150, hauteurf-250)));
+                    f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-150, hauteurf-500)));
+                    f.ajouter(new Texte(coltexte, pionsj2, Calibri, new Point(largeurf-150, hauteurf-550)));
+                    
+                    
 
                     f.rafraichir();
+
+            // Création des boutons et création des clics
+            while (menu == false) {
+                f.ajouter(new Rectangle(fond,menubg,menuhd,true));
+                f.ajouter(new Texte(coltexte, "Menu Principal", Calibri, textecoor));
+                if (souris.getClicGauche() == true) {
+                    Point collectclic = souris.getPosition();
+                    if (collectclic.getX() > menubg.getX() &&  collectclic.getY() < menuhd.getY()) {
+                        f.fermer();
+                        menu = true;
+                        arreter = true;
+                    }
+                }
+                f.rafraichir();
+            }
+
+                    
                 }
             }
         }
