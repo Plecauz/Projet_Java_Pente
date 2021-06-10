@@ -75,7 +75,31 @@ public class Plateau{
                 fini = true;
             }
         }
+        fini = false;
+        i = 1;
+        while(!fini){
+            if((posX+(-relX*i) < 20 && posY+(-relY*i) <20) && (posX+relX*i > 0 && posY+relY*i > 0)){
+                if(intersections[posX+(-relX*i)][posY+(-relY*i)] != null){
+                    if(intersections[posX+(-relX*i)][posY+(-relY*i)].getJoueur().getNumero() == num){
+                        numPion += 1;
+                        i+=1;
+                    }
+                    else{
+                        fini = true;
+                    }
+                }
+                else{
+                    fini = true;
+                }
+            }
+            else{
+                fini = true;
+            }
+        }
         System.out.println(numPion);
+        if(numPion == 5){
+            Victoire.main(num);
+        }
     }
 
     public boolean Capture(Pion pion,int[] relatif ){
