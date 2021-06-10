@@ -43,17 +43,16 @@ public class Demarrage{
         boolean play = true;
         while ( play) {
             if (souris.getClicGauche() == true) {
-                Point xclic = souris.getPosition();
-                Point yclic = souris.getPosition();
+                Point clic = souris.getPosition();
                 // Si le clic est effectué dans la zone du rectangle "Jouer", lance le jeu
-                if (xclic.getX() > (x1/2)+50 && yclic.getY() > (y1/2)+100) {
-                    if (xclic.getX() < x2/2 && yclic.getY() < (y2/2)+100 ) {
+                if (clic.getX() > (x1/2)+50 && clic.getY() > (y1/2)+100) {
+                    if (clic.getX() < x2/2 && clic.getY() < (y2/2)+100 ) {
                         Jeu.main(args);
                     }       
                 }
                 // Si le clic est effectué dans la zone du rectangle "Quitter", ferme la fenêtre du menu
-                if (xclic.getX() > (largeur/2)-100 && yclic.getY() > 50) {
-                    if (xclic.getX() < (largeur/2)+100 && yclic.getY() < 100) {
+                if (clic.getX() > (largeur/2)-100 && clic.getY() > 50) {
+                    if (clic.getX() < (largeur/2)+100 && clic.getY() < 100) {
                         f.fermer();
                         play = false;
                     }
