@@ -19,7 +19,7 @@ public class Plateau{
         return f;
     }
 
-    //Getter
+    //Retourne le tableau des intersections (des cases)
     public Pion[][] getIntersections(){
         return this.intersections;
     }
