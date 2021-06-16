@@ -23,6 +23,7 @@ public class Pion {
         this.y = y;
     }
 
+    //Retourne le joueur
     public Joueur getJoueur(){
         return this.joueur;
     }
