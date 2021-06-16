@@ -43,30 +43,31 @@ public class Joueur {
         }
     }
 
+    // Méthode qui retourne le numéro du joueur
     public int getNumero(){
         return this.numero;
     }
 
+    // Méthode qui retourne le nom du joueur
     public String getNom() {
         return nom;
     }
 
+    // Méthode qui retourne le nombre de pions du joueur
     public int getNbPions() {
         return listeDePions.length;
     }
 
+    // Méthode qui retourne si le joueur joue à ce tour ou au prochain
     public boolean getTour(){
         return this.tourdejouer;
     }
 
+    // Méthode qui applique la valeur du paramètre au booléen
     public void setTour(boolean tour){
         this.tourdejouer = tour;
     }
 
-    public String getNom(){
-        return this.nom;
-    }
-  
     //Méthode qui retourne le nom du joueur, son numero de joueur, son nombre de pions et si c'est à lui de jouer
     public String toString(){
         return (this.nom+"est le joueur numero "+ this.numero+" et possede "+ this.listeDePions.length + " " + "pions" + "et son tour de jouer est sur " +this.tourdejouer);
