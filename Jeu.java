@@ -7,7 +7,7 @@ public class Jeu {
     public static void main(String[] args) {
         Plateau p = new Plateau();
         Joueur j1 = new Joueur("Plop",1);
-        Joueur j2 = new Joueur("Joueur",2);
+        Joueur j2 = new Joueur("Bob",2);
         int hauteurf = 800;
         int largeurf = 1300;
         int hauteur = 800;
@@ -20,15 +20,17 @@ public class Jeu {
         // Création des boutons de navigation
         Couleur coltexte = new Couleur(153,38,0);
         Font Calibri = new Font("Calibri", Font.TYPE1_FONT, 25);
-        String pionsj1 = String.valueOf(j1.getNbPions());
-        String pionsj2 = String.valueOf(j2.getNbPions());
         boolean arreter = false;
 
         // Affichage des infos;
-        f.ajouter(new Texte(coltexte, j1.getNom(), Calibri, new Point(largeurf-150, hauteurf-200)));
-        f.ajouter(new Texte(coltexte, pionsj1, Calibri, new Point(largeurf-150, hauteurf-250)));
-        f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-150, hauteurf-500)));
-        f.ajouter(new Texte(coltexte, pionsj2, Calibri, new Point(largeurf-150, hauteurf-550)));
+        if(j1.getTour())
+            f.ajouter(new Texte(coltexte, "Joueur actuel : " + j1.getNom(), Calibri, new Point(largeurf-400, hauteurf-100)));
+        else
+        f.ajouter(new Texte(coltexte, "Joueur actuel : " + j2.getNom(), Calibri, new Point(largeurf-400, hauteurf-100)));
+        f.ajouter(new Texte(coltexte, j1.getNom(), Calibri, new Point(largeurf-400, hauteurf-200)));
+        f.ajouter(new Texte(coltexte, "Nombre de capture : " +String.valueOf(j1.getCapture()), Calibri, new Point(largeurf-400, hauteurf-250)));
+        f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-400, hauteurf-500)));
+        f.ajouter(new Texte(coltexte, "Nombre de capture : "+String.valueOf(j2.getCapture()), Calibri, new Point(largeurf-400, hauteurf-550)));
         
         p.afficherPlateau(f, largeur, hauteur);
         f.rafraichir();
@@ -70,12 +72,15 @@ public class Jeu {
                         }
                     }
                     // Mise à jour du compteur
-                    pionsj1 = String.valueOf(j1.getNbPions());
-                    pionsj2 = String.valueOf(j2.getNbPions());
-                    f.ajouter(new Texte(coltexte, j1.getNom(), Calibri, new Point(largeurf-150, hauteurf-200)));
-                    f.ajouter(new Texte(coltexte, pionsj1, Calibri, new Point(largeurf-150, hauteurf-250)));
-                    f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-150, hauteurf-500)));
-                    f.ajouter(new Texte(coltexte, pionsj2, Calibri, new Point(largeurf-150, hauteurf-550)));
+
+                    if(j1.getTour())
+                        f.ajouter(new Texte(coltexte, "Joueur actuel : " + j1.getNom(), Calibri, new Point(largeurf-400, hauteurf-100)));
+                    else
+                        f.ajouter(new Texte(coltexte, "Joueur actuel : " + j2.getNom(), Calibri, new Point(largeurf-400, hauteurf-100)));
+                    f.ajouter(new Texte(coltexte, j1.getNom(), Calibri, new Point(largeurf-400, hauteurf-200)));
+                    f.ajouter(new Texte(coltexte, "Nombre de capture : " +String.valueOf(j1.getCapture()), Calibri, new Point(largeurf-400, hauteurf-250)));
+                    f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-400, hauteurf-500)));
+                    f.ajouter(new Texte(coltexte, "Nombre de capture : "+String.valueOf(j2.getCapture()), Calibri, new Point(largeurf-400, hauteurf-550)));
                     f.rafraichir();   
                 }
             }

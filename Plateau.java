@@ -111,7 +111,7 @@ public class Plateau{
         }
     }
 
-    public boolean Capture(Pion pion,int[] relatif ){
+    public void Capture(Pion pion,int[] relatif ){
         boolean capture = false ;
         int num = pion.getJoueur().getNumero();
         int posX = pion.getX();
@@ -129,18 +129,18 @@ public class Plateau{
                                 
                                 capture = true ; 
                             }
-                        
                         }  
                     } 
                 }
-            
             }
         if (capture == true) {
             supprimerPion(intersections[posX+relX*2][posY+relY*2]);
             supprimerPion(intersections[posX+relatif[0]][posY+relatif[1]]);
-        }    
-        System.out.println(capture);
-        return  capture ;   
+            pion.getJoueur().setCapture(pion.getJoueur().getCapture()+1);
+            if(pion.getJoueur().getCapture() == 5){
+                Victoire.main(num);
+            } 
+        }
     }
     /*Cette méthode reçoit un pion ainsi que la fenêtre du jeu, on adapte la taille du pion à la taille de la fenêtre et on affiche
     une image de pion blanc ou de pion noir en fonction du joueur*/

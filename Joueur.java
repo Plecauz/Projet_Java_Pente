@@ -4,6 +4,7 @@ public class Joueur {
     private String nom = new String();
     private int numero;
     private boolean tourdejouer;
+    private int nbCapture;
     
     //METHODES
 
@@ -12,7 +13,7 @@ public class Joueur {
         this.nom = "nom inconnu";
         this.numero = 0;
         this.tourdejouer = false;
-        
+        this.nbCapture = 0;
         this.listeDePions= new Pion[35] ;
         
     }
@@ -22,6 +23,7 @@ public class Joueur {
         this.numero = numero;
         this.listeDePions= new Pion[35] ;
         this.tourdejouer = false;
+        this.nbCapture = 0;
     }
     //Methode qui determine le joueur qui joue en premier
     public static int JoueurStart(){
@@ -46,6 +48,14 @@ public class Joueur {
     // Méthode qui retourne le numéro du joueur
     public int getNumero(){
         return this.numero;
+    }
+
+    public int getCapture(){
+        return this.nbCapture;
+    }
+
+    public void setCapture(int nb){
+        this.nbCapture = nb;
     }
 
     // Méthode qui retourne le nom du joueur
