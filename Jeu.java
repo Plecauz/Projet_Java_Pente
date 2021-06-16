@@ -8,7 +8,7 @@ public class Jeu {
         Plateau p = new Plateau();
         Joueur j1 = new Joueur("Plop",1);
         Joueur j2 = new Joueur("Joueur",2);
-        int hauteurf = 900;
+        int hauteurf = 800;
         int largeurf = 1300;
         int hauteur = 800;
         int largeur = 800;
@@ -19,17 +19,9 @@ public class Jeu {
 
         // Création des boutons de navigation
         Couleur coltexte = new Couleur(153,38,0);
-        Couleur fond = new Couleur(175,222,228);
         Font Calibri = new Font("Calibri", Font.TYPE1_FONT, 25);
-        // Bouton Menu
-        Point menubg = new Point(tailleX,hauteurf-80);
-        Point menuhd = new Point(tailleX+200,hauteurf-20);
-        Point histobg = new Point(tailleX+250, hauteurf-80);
-        Point histohd = new Point(tailleX+450, hauteurf-80);
-        Point textecoor = new Point(tailleX+100,hauteurf-50);
         String pionsj1 = String.valueOf(j1.getNbPions());
         String pionsj2 = String.valueOf(j2.getNbPions());
-        boolean menu = false;
         boolean arreter = false;
 
         // Affichage des infos;
@@ -38,14 +30,6 @@ public class Jeu {
         f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-150, hauteurf-500)));
         f.ajouter(new Texte(coltexte, pionsj2, Calibri, new Point(largeurf-150, hauteurf-550)));
         
-        f.ajouter(new Rectangle(fond,histobg,histohd,true));
-        f.ajouter(new Texte(coltexte, "Historique des coups", Calibri, textecoor));
-                if (souris.getClicGauche() == true) {
-                    Point collectclic = souris.getPosition();
-                    if (collectclic.getX() > menubg.getX() &&  collectclic.getY() < menuhd.getY()) {
-                        System.out.println("Historique à afficher");
-                    }
-                }
         p.afficherPlateau(f, largeur, hauteur);
         f.rafraichir();
         while (arreter == false ) { 
@@ -92,27 +76,7 @@ public class Jeu {
                     f.ajouter(new Texte(coltexte, pionsj1, Calibri, new Point(largeurf-150, hauteurf-250)));
                     f.ajouter(new Texte(coltexte, j2.getNom(), Calibri, new Point(largeurf-150, hauteurf-500)));
                     f.ajouter(new Texte(coltexte, pionsj2, Calibri, new Point(largeurf-150, hauteurf-550)));
-                    
-                    
-
-                    f.rafraichir();
-
-            // Création des boutons et création des clics
-            while (menu == false) {
-                f.ajouter(new Rectangle(fond,menubg,menuhd,true));
-                f.ajouter(new Texte(coltexte, "Menu Principal", Calibri, textecoor));
-                if (souris.getClicGauche() == true) {
-                    Point collectclic = souris.getPosition();
-                    if (collectclic.getX() > menubg.getX() &&  collectclic.getY() < menuhd.getY()) {
-                        f.fermer();
-                        menu = true;
-                        arreter = true;
-                    }
-                }
-                f.rafraichir();
-            }
-
-                    
+                    f.rafraichir();   
                 }
             }
         }
