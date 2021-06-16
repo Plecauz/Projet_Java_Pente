@@ -6,10 +6,12 @@ public class Plateau{
 
     private Pion[][] intersections;
 
+    //Constructeur par défaut
     public Plateau(){
         intersections = new Pion[20][20];
     }
 
+    //Cette méthode affiche le plateau tout en s'adaptant à la fênetre
     public Fenetre afficherPlateau(Fenetre f,int largeur, int hauteur){
         int tailleX = largeur/21;
         int tailleY = hauteur/21;
@@ -17,10 +19,12 @@ public class Plateau{
         return f;
     }
 
+    //Getter
     public Pion[][] getIntersections(){
         return this.intersections;
     }
 
+    /*Cette méthode ajoute un pion si il n'est pas déjà présent dans le tableau d'intersections puis regarde ses voisins*/
     public boolean ajoutPion(Pion pion){
         if (intersections[pion.getX()][pion.getY()] == null){
             intersections[pion.getX()][pion.getY()] = pion;
@@ -30,7 +34,9 @@ public class Plateau{
         return false;
     }
 
-    public void checkVoisins(Pion pion){
+    /*Cette fonction regarde les voisins de chaque pion posé en utilisant les coordonées relatives, si il rencontre un pion
+    de la même couleur que lui in déclenche la méthode checkCoupGagnant et si il est de couleur différente alors il déclenche la méthode Capture*/
+    public void checkVoisins(Pion pion){ 
         int posX = pion.getX();
         int posY = pion.getY();
         int[][] relatifs = {{-1,1},{0,1},{1,1},{-1,0},{1,0},{-1,-1},{0,-1},{1,-1}};
@@ -47,6 +53,9 @@ public class Plateau{
         }
     }
 
+    /*Cette fonction se déclenche si un pion a détecter un voisin de la même couleur que lui, on récupère le pion qui a fait l'appel ainsi
+    que la coordonnée relative de son voisin, il suffira de multiplier cette coordonée pour regarder les pions au dela ( sans oublier le sens inverse)
+    afin de comptabiliserle nombre de pions de même couleur allignées, une fois que le compteur atteint 5 on enclenche la victoire*/
     public void checkCoupGagnant(Pion pion, int[] relatif){
         int num = pion.getJoueur().getNumero();
         int posX = pion.getX();
@@ -133,7 +142,8 @@ public class Plateau{
         System.out.println(capture);
         return  capture ;   
     }
-
+    /*Cette méthode reçoit un pion ainsi que la fenêtre du jeu, on adapte la taille du pion à la taille de la fenêtre et on affiche
+    une image de pion blanc ou de pion noir en fonction du joueur*/
     public Fenetre afficherPion(Fenetre f,int largeur, int hauteur, Pion pion){
         int tailleX = largeur/21;
         int tailleY = hauteur/21;
@@ -148,6 +158,7 @@ public class Plateau{
         return f;
     }
 
+    /*Cette méthode supprime un pion donné du tableau d'intersections*/
     public void supprimerPion(Pion pion){
         intersections[pion.getX()][pion.getY()] = null;
     }
